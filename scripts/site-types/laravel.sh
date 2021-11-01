@@ -86,6 +86,8 @@ block="server {
 
     ssl_certificate     /etc/ssl/certs/$1.crt;
     ssl_certificate_key /etc/ssl/certs/$1.key;
+
+    client_max_body_size 100M;
 }
 "
 

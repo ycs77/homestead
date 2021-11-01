@@ -1,26 +1,32 @@
 ---
-ip: "192.168.56.56"
+ip: "192.168.10.10"
 memory: 2048
 cpus: 2
 provider: virtualbox
 
-authorize: ~/.ssh/id_rsa.pub
+authorize: ~/.ssh/id_ed25519.pub
 
 keys:
-  - ~/.ssh/id_rsa
+  - ~/.ssh/id_ed25519
 
 folders:
-  - map: ~/code
-    to: /home/vagrant/code
+  - map: d:/dev/code/_public
+    to: /home/vagrant/code/_public
+
+  - map: d:/dev/code/homestead
+    to: /home/vagrant/code/homestead
 
 sites:
   - map: homestead.test
-    to: /home/vagrant/code/public
+    to: /home/vagrant/code/homestead/public
 
 databases:
   - homestead
 
+backup: true
+
 features:
+  - mysql: true
   - mariadb: false
   - postgresql: false
   - ohmyzsh: false
@@ -29,11 +35,11 @@ features:
 
 services:
   - enabled:
-      - "mysql"
-#   - disabled:
-#       - "postgresql@11-main"
+    - "mysql"
 
-# ports:
+ports:
+  - send: 5173 # for vite server
+    to: 5173
 #   - send: 33060 # MySQL/MariaDB
 #     to: 3306
 #   - send: 4040

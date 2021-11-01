@@ -21,6 +21,7 @@ class Homestead
     unless settings.has_key?('SpeakFriendAndEnter')
       config.vm.box_version = settings['version'] ||= '>= 14.0.2, < 15.0.0'
     end
+    config.vm.box_architecture = 'amd64'
     config.vm.hostname = settings['hostname'] ||= 'homestead'
 
     # Configure A Private Network IP
@@ -220,7 +221,7 @@ class Homestead
 
             smb_creds = {smb_host: folder['smb_host'], smb_username: folder['smb_username'], smb_password: folder['smb_password']}
           end
-          
+
           # For b/w compatibility keep separate 'mount_opts', but merge with options
           options = (folder['options'] || {})
             .merge({ mount_options: mount_opts })

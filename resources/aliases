@@ -13,17 +13,43 @@ alias serve=serve-laravel
 alias xoff='sudo phpdismod -s cli xdebug'
 alias xon='sudo phpenmod -s cli xdebug'
 
-alias nrd="npm run dev"
-alias nrw="npm run watch"
-alias nrwp="npm run watch-poll"
-alias nrh="npm run hot"
-alias nrp="npm run production"
+alias ni='npm install'
+alias nd='npm run dev'
+alias nb='npm run build'
+alias nt='npm run test'
+alias y='yarn'
+alias yd='yarn dev'
+alias yb='yarn build'
+alias yt='yarn test'
+alias ytr='yarn test --run'
 
-alias yrd="yarn dev"
-alias yrw="yarn watch"
-alias yrwp="yarn watch-poll"
-alias yrh="yarn hot"
-alias yrp="yarn production"
+alias pa='php artisan'
+alias pav='php artisan serve'
+alias pam='php artisan migrate'
+alias pams='php artisan migrate --seed'
+alias pamr='php artisan migrate:rollback'
+alias pamf='php artisan migrate:fresh'
+alias pamfs='php artisan migrate:fresh --seed'
+alias pas='php artisan db:seed'
+alias par='php artisan route:list'
+alias paq='php artisan queue:work'
+alias pah='php artisan horizon'
+alias pat='php artisan tinker'
+alias phpunit='./vendor/bin/phpunit --colors=always'
+alias pu='phpunit'
+alias pest='./vendor/bin/pest --colors=always'
+alias pint='./vendor/bin/pint'
+alias stan='./vendor/bin/phpstan analyse --memory-limit=512M'
+
+function mkcd() {
+  mkdir "$1"
+  cd "$1"
+}
+
+function killport() {
+  sudo kill -9 $(sudo lsof -t -i:"$1")
+}
+alias k='killport 5173'
 
 function artisan() {
     php artisan "$@"
