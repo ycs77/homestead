@@ -25,6 +25,34 @@ alias yrwp="yarn watch-poll"
 alias yrh="yarn hot"
 alias yrp="yarn production"
 
+alias pa='php artisan'
+alias pav='php artisan serve'
+alias pam='php artisan migrate'
+alias pams='php artisan migrate --seed'
+alias pamr='php artisan migrate:rollback'
+alias pamf='php artisan migrate:fresh'
+alias pamfs='php artisan migrate:fresh --seed'
+alias pas='php artisan db:seed'
+alias par='php artisan route:list'
+alias paq='php artisan queue:work'
+alias pah='php artisan horizon'
+alias pat='php artisan tinker'
+alias phpunit='./vendor/bin/phpunit --colors=always'
+alias pu='phpunit'
+alias pest='./vendor/bin/pest --colors=always'
+alias pint='./vendor/bin/pint'
+alias stan='./vendor/bin/phpstan analyse --memory-limit=512M'
+
+function mkcd() {
+  mkdir "$1"
+  cd "$1"
+}
+
+function killport() {
+  sudo kill -9 $(sudo lsof -t -i:"$1")
+}
+alias k='killport 5173'
+
 function artisan() {
     php artisan "$@"
 }

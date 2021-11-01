@@ -8,6 +8,6 @@ if [ ! -f $PATH_CONFIG ]; then
     mkdir -p "$PATH_NGROK"
     cat > "$PATH_CONFIG" << EOF
 version: 2
-web_addr: $1:4040
+web_addr: 0.0.0.0:4040
 EOF
 fi
